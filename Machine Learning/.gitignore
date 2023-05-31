@@ -1,0 +1,5 @@
+# ignore all folder env_capstone
+
+env_capstone/*
+```
+
