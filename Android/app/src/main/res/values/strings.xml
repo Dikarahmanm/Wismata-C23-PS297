@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Wismata</string>
+    <string name="login">Login to your Account</string>
+    <string name="login2">and start explore</string>
+    <string name="logintv">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="donthave">Dont have an Account?</string>
+    <string name="Register">Register</string>
 </resources>
