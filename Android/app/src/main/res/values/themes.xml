@@ -8,9 +8,13 @@
     <style name="Theme.Wismata" parent="Base.Theme.Wismata" />
     
     <style name="ShapeAppearanceOverlay.CardView" parent="">
-        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyTopLeft">cut</item>
         <item name="cornerFamilyTopRight">rounded</item>
-        <item name="cornerSizeTopLeft">10%</item>
-        <item name="cornerSizeTopRight">10%</item>
+        <item name="cornerFamilyBottomLeft">cut</item>
+        <item name="cornerFamilyBottomRight">cut</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">30%</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
     </style>
 </resources>

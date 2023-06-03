@@ -7,4 +7,7 @@
     <string name="password">Password</string>
     <string name="donthave">Dont have an Account?</string>
     <string name="Register">Register</string>
+    <string name="Register_title">Create Your Account</string>
+    <string name="Register_subtitle">Please enter your indo to create account</string>
+    <string name="haveaccount">Already have an Account?</string>
 </resources>
