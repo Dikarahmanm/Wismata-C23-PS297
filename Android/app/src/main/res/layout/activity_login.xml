@@ -55,14 +55,13 @@
         android:text="@string/logintv"
         android:textColor="@color/orange"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.114"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
         app:layout_constraintTop_toTopOf="@+id/view" />
 
-    <EditText
+    <com.dika.wismata.ui.component.CustomEmailEdt
         android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:ems="10"
@@ -74,9 +73,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Login" />
 
-    <EditText
+    <com.dika.wismata.ui.component.CustomPasswordEdt
         android:id="@+id/editTextTextPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:autofillHints=""
@@ -89,7 +88,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
-    <com.google.android.material.button.MaterialButton
+    <com.dika.wismata.ui.component.CustomButton
         android:id="@+id/btn_login"
         android:layout_width="260dp"
         android:layout_height="50dp"
@@ -98,6 +97,7 @@
         android:fontFamily="@font/monbold"
         android:text="@string/logintv"
         android:textSize="18sp"
+        android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
