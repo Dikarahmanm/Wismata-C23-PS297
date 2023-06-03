@@ -12,4 +12,7 @@
     <string name="haveaccount">Already have an Account?</string>
     <string name="invalid_email">Invalid Email Address</string>
     <string name="invalid_password">Password must be at least 8 characters</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="confirmPassword">Confirm Password</string>
 </resources>
