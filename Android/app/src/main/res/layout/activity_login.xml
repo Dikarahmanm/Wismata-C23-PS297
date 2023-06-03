@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/monbold"
         android:text="@string/login"
-        android:textSize="28sp"
         android:textColor="@color/white"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,36 +25,40 @@
         android:id="@+id/login_textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login2"
-        android:textSize="15sp"
-        android:textColor="@color/white"
         android:fontFamily="@font/monreg"
+        android:text="@string/login2"
+        android:textColor="@color/white"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/login_textView"
         app:layout_constraintStart_toStartOf="@+id/login_textView"
         app:layout_constraintTop_toBottomOf="@+id/login_textView" />
 
-    <View
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/view"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="540dp"
         android:background="@color/white"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="193dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.CardView"
+        >
 
-    </View>
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/monexbold"
         android:text="@string/logintv"
-        android:textSize="30sp"
         android:textColor="@color/orange"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.114"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="231dp" />
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
@@ -75,6 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
@@ -82,8 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login"
@@ -91,9 +95,9 @@
         android:layout_height="50dp"
         android:layout_marginTop="124dp"
         android:background="@drawable/btn_shape_round"
-        android:textSize="18sp"
         android:fontFamily="@font/monbold"
         android:text="@string/logintv"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"

@@ -6,4 +6,11 @@
     </style>
 
     <style name="Theme.Wismata" parent="Base.Theme.Wismata" />
+    
+    <style name="ShapeAppearanceOverlay.CardView" parent="">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopLeft">10%</item>
+        <item name="cornerSizeTopRight">10%</item>
+    </style>
 </resources>
