@@ -4,8 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/orange"
     tools:context=".ui.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/login_textView"
@@ -15,11 +24,10 @@
         android:text="@string/login"
         android:textColor="@color/white"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.152" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/login_textView2"
@@ -33,31 +41,18 @@
         app:layout_constraintStart_toStartOf="@+id/login_textView"
         app:layout_constraintTop_toBottomOf="@+id/login_textView" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/view"
-        android:layout_width="0dp"
-        android:layout_height="540dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.CardView"
-        >
-
-    </com.google.android.material.card.MaterialCardView>
-
     <TextView
         android:id="@+id/Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:fontFamily="@font/monexbold"
         android:text="@string/logintv"
+        android:layout_marginTop="140dp"
         android:textColor="@color/orange"
         android:textSize="30sp"
         app:layout_constraintHorizontal_bias="0.114"
         app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toTopOf="@+id/view" />
+        app:layout_constraintTop_toBottomOf="@+id/login_textView2" />
 
     <com.dika.wismata.ui.component.CustomEmailEdt
         android:id="@+id/editTextTextEmailAddress"
@@ -94,10 +89,10 @@
         android:layout_height="50dp"
         android:layout_marginTop="124dp"
         android:background="@drawable/btn_shape_round"
+        android:enabled="false"
         android:fontFamily="@font/monbold"
         android:text="@string/logintv"
         android:textSize="18sp"
-        android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"

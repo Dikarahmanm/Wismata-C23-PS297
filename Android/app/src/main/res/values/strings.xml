@@ -15,4 +15,8 @@
     <string name="firstName">First Name</string>
     <string name="lastName">Last Name</string>
     <string name="confirmPassword">Confirm Password</string>
+    <string name="subTitle1">Temukan keunikan</string>
+    <string name="umkm">UMKM</string>
+    <string name="subTitle2">lokal di setiap destinasi</string>
+    <string name="subTitle4">wisata Yogyakrta</string>
 </resources>

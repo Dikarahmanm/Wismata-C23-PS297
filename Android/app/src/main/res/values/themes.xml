@@ -5,6 +5,12 @@
          <item name="colorPrimary">@color/orange</item>
     </style>
 
+    <style name="appbar.Theme.Wismata" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorPrimaryVariant">@color/orange</item>
+    </style>
+
     <style name="Theme.Wismata" parent="Base.Theme.Wismata" />
     
     <style name="ShapeAppearanceOverlay.CardView" parent="">
