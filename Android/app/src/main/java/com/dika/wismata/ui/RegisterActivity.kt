@@ -3,6 +3,7 @@ package com.dika.wismata.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.graphics.drawable.toDrawable
 import com.dika.wismata.R
 import com.dika.wismata.databinding.ActivityRegisterBinding
 
@@ -16,6 +17,7 @@ class RegisterActivity : AppCompatActivity() {
 
         supportActionBar?.title = getString(R.string.Register)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setBackgroundDrawable(getColor(R.color.orange).toDrawable())
 
         binding.login.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
