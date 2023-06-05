@@ -21,27 +21,26 @@ class Interpreter():
         return np.argmax(output_data)
 
 
-def run():
+def recommend(category_test, price_test):
 
     interpreter = Interpreter(model_path)
 
-    # test data 
-
-    category_test = 3
-    price_test = 1
 
     input_data = np.array([[category_test, price_test]], dtype=np.float32)
 
     prediction = interpreter.predict(input_data)
 
-    print(prediction)
+    
 
+    return prediction
     
 
 
 if __name__ == "__main__":
-
-    run()
+    category_test = 1
+    price_test = 4
+    prediction = recommend(category_test, price_test)
+    print(prediction)
 
     
 
