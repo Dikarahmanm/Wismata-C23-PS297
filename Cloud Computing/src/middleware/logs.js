@@ -1,7 +1,6 @@
 const logRequest = (req, res, next) => {
-    console.log('Successfully Handled Request API to PATH: ', req.path);
+    console.log('Terjadi request ke PATH: ', req.path);
     next();
-  }
+}
 
-  module.exports = logRequest;
-
+module.exports = logRequest;

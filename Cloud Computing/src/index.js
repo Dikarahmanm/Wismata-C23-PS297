@@ -1,31 +1,31 @@
-const express = require ('express');
+require('dotenv').config()
+const PORT = process.env.PORT || 5000;
+const express = require('express');
 
-const usersRoutes = require ('./routes/users');
+const usersRoutes = require('./routes/users');
 
 const middlewareLogRequest = require('./middleware/logs');
+const upload = require('./middleware/multer');
 
 const app = express();
 
-//== middleware ==
+app.use(middlewareLogRequest);
+app.use(express.json());
+app.use('/assets', express.static('public/images'))
 
-app.use(middlewareLogRequest)
+app.use('/users', usersRoutes);
+app.post('/upload',upload.single('photo'),(req, res) => {
+    res.json({
+        message: 'Upload berhasil'
+    })
+})
 
-//== end of middleware ==
+app.use((err, req, res, next) => {
+    res.json({
+        message: err.message
+    })
+})
 
-app.use('/users', usersRoutes)
-
-
-app.get("/", (req, res) => {
-  res.json({
-    name:"Wellyaz",
-    email:"wellyaz.id@gmail.com"
-  });
-});
-
-app.post("/", (req, res) => {
-  res.send('hello POST method');
-});
-
-app.listen(4000, () => {
-  console.log('Server successfully run on server 4000');
-});
+app.listen(PORT, () => {
+    console.log(`Server successfully running on ${PORT}`);
+})
