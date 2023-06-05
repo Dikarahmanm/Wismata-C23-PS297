@@ -1,4 +1,4 @@
-import os
+#!/usr/bin/env python3
 import tensorflow as tf
 import pandas as pd
 import numpy as np
@@ -20,6 +20,30 @@ class Interpreter():
         output_data = self.interpreter.get_tensor(self.output_details[0]['index'])
         return np.argmax(output_data)
 
+
+def run():
+
+    interpreter = Interpreter(model_path)
+
+    # test data 
+
+    category_test = 3
+    price_test = 1
+
+    input_data = np.array([[category_test, price_test]], dtype=np.float32)
+
+    prediction = interpreter.predict(input_data)
+
+    print(prediction)
+
+    
+
+
+if __name__ == "__main__":
+
+    run()
+
+    
 
 
 
