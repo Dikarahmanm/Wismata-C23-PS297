@@ -46,8 +46,9 @@ const createNewUser = async (body) => {
   
 
 const updateUser = (body, idUser) => {
+    const hashedPassword = encrypt.hashSync(body.password, 12);
     const SQLQuery = `  UPDATE user 
-                        SET email='${body.email}', password='${body.password}' 
+                        SET email='${body.email}', password='${hashedPassword}' 
                         WHERE id=${idUser}`;
 
     return dbPool.execute(SQLQuery);
@@ -59,10 +60,39 @@ const deleteUser = (idUser) => {
     return dbPool.execute(SQLQuery);
 }
 
+const loginUser = async (req, body) => {
+    const connection = await dbPool.getConnection();
+    await connection.beginTransaction();
+
+    const query = 'SELECT * FROM user WHERE email = ?';
+    db.query(query, [email], async (error, results) => {
+      if (error) {
+        console.error('Error executing SQL query:', error);
+        res.status(500).json({ error: 'Internal server error' });
+        return;
+      }
+    
+      if (results.length === 1) {
+        const user = results[0];
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
+    
+        if (isPasswordMatch) {
+          res.json({ message: 'Login successful' });
+        } else {
+          res.status(401).json({ error: 'Invalid username or password' });
+        }
+      } else {
+        res.status(401).json({ error: 'Invalid username or password' });
+      }
+    });
+  }
+
+
 module.exports = {
     getAllUsers,
     getUser,
     createNewUser,
     updateUser,
     deleteUser,
+    loginUser
 }
