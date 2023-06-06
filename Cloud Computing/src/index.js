@@ -14,9 +14,10 @@ app.use(express.json());
 app.use('/assets', express.static('public/images'))
 
 app.use('/users', usersRoutes);
+
 app.post('/upload',upload.single('photo'),(req, res) => {
     res.json({
-        message: 'Upload berhasil'
+        message: 'Upload success'
     })
 })
 

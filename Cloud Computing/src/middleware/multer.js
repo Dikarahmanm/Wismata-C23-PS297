@@ -8,16 +8,16 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => {
         const timestamp = new Date().getTime();
         const originalname = file.originalname;
-        // const extension = path.extname(file.originalname);
+        const extension = path.extname(file.originalname);
 
-        cb(null, `${timestamp}-${originalname}`);
+        cb(null, `${timestamp}-${originalname}${extension}`);
     }
 });
 
 const upload = multer({
     storage: storage,
     limits: {
-        fileSize: 3 * 1000 * 1000 // 3 MB
+        fileSize: 5 * 1000 * 1000 // 5 MB
     }
 });
 

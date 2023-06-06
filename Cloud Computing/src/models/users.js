@@ -1,4 +1,5 @@
 const dbPool = require('../config/database');
+const encrypt = require('bcrypt');
 
 const getAllUsers = () => {
     const SQLQuery = 'SELECT * FROM user';
@@ -13,12 +14,36 @@ const getUser = (idUser) => {
 }
 
 
-const createNewUser = (body) => {
-    const SQLQuery = `  INSERT INTO user (email, password) 
-                        VALUES ( '${body.email}', '${body.password}')`;
-
-    return dbPool.execute(SQLQuery);
-}
+const createNewUser = async (body) => {
+    const connection = await dbPool.getConnection();
+    try {
+      await connection.beginTransaction();
+  
+      const hashedPassword = encrypt.hashSync(body.password, 12);
+      const userQuery = `INSERT INTO user (email, password) 
+                         VALUES (?, ?)`;
+      const userValues = [body.email, hashedPassword];
+  
+      await connection.query(userQuery, userValues);
+  
+      const profileQuery = `INSERT INTO profile (userEmail, namaDepan, namaBelakang, bioProfile, fotoProfile, role) 
+                            VALUES (?, ?, ?, ?, ?, ?)`;
+      const profileValues = [body.email, body.namaDepan, body.namaBelakang, body.bioProfile, body.fotoProfile, body.role];
+  
+      await connection.query(profileQuery, profileValues);
+  
+      await connection.commit();
+      connection.release();
+  
+      return Promise.resolve();
+    } catch (error) {
+      await connection.rollback();
+      connection.release();
+  
+      return Promise.reject(error);
+    }
+  };
+  
 
 const updateUser = (body, idUser) => {
     const SQLQuery = `  UPDATE user 
