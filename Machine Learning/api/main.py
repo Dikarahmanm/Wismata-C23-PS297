@@ -2,16 +2,17 @@ from flask import Flask, request, jsonify
 from inference import recommend_rating
 
 
+
+
 app = Flask(__name__)
 
 
-@app.route("/")
-def home():
-    return ''' <p> Wismata Machine Learning API </p> '''
 
 
-@app.route("/api/get_rating", methods=["GET"])
-def get_recommendation_rating():
+
+
+@app.route("/", methods=["GET", "POST"])
+def index():
 
     # load data category and price from request
     category_test = request.args.get("category")

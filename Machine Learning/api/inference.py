@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 
 
-model_path = "../model/filtering_model.tflite"
+model_path = "model/filtering_model.tflite"
 
 
 class Interpreter():
