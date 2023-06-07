@@ -10,4 +10,13 @@
     <string name="Register_title">Create Your Account</string>
     <string name="Register_subtitle">Please enter your indo to create account</string>
     <string name="haveaccount">Already have an Account?</string>
+    <string name="invalid_email">Invalid Email Address</string>
+    <string name="invalid_password">Password must be at least 8 characters</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="subTitle1">Temukan keunikan</string>
+    <string name="umkm">UMKM</string>
+    <string name="subTitle2">lokal di setiap destinasi</string>
+    <string name="subTitle4">wisata Yogyakrta</string>
 </resources>
