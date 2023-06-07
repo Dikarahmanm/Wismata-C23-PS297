@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
 import tensorflow as tf
-import pandas as pd
 import numpy as np
 
 
-model_path = "../model/filtering_model.tflite"
+model_path = "model/filtering_model.tflite"
 
 
 class Interpreter():
@@ -21,32 +19,8 @@ class Interpreter():
         return np.argmax(output_data)
 
 
-def recommend(category_test, price_test):
-
+def recommend_rating(category_test, price_test):
     interpreter = Interpreter(model_path)
-
-
     input_data = np.array([[category_test, price_test]], dtype=np.float32)
-
     prediction = interpreter.predict(input_data)
-
-    
-
     return prediction
-    
-
-
-if __name__ == "__main__":
-    category_test = 1
-    price_test = 4
-    prediction = recommend(category_test, price_test)
-    print(prediction)
-
-    
-
-
-
-
-    
-
-

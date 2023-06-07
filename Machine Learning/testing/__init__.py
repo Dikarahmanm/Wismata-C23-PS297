@@ -1,5 +1,5 @@
-from flask import Flask, request, jsonify, render_template
-from inference import run
+from flask import Flask, request, jsonify, render_template, json
+from inference import recommend
 import requests
 import json
 import os
@@ -8,17 +8,20 @@ import os
 app = Flask(__name__)
 
 
-@app.route ("/", methods=["POST"])
-def index():
+@app.route ("/", methods=[ "GET" ])
+def result():
 
-    data = request.get_json(force=True)
-    category = data["category"]
-    price = data["price"]
+    prediction = recommend(1,4)
 
-    prediction =  run(category, price)
+    prediction = int(prediction)
 
-    print(prediction)
- 
+    return jsonify(prediction)
+
+
+if __name__ == "__main__":
+
+    app.run(debug=True)
+
 
 
 
