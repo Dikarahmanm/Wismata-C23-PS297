@@ -4,11 +4,11 @@ const mysql = require('mysql');
 
 // Konfigurasi koneksi ke database MySQL
 const connection = mysql.createConnection({
-  host: 'alamat_ip_atau_host',
-  port: 'port_mysql',
-  user: 'username',
-  password: 'password',
-  database: 'nama_database',
+  host: '34.101.53.246',
+  port: '3306',
+  user: 'root',
+  password: '3245',
+  database: 'wismata-app',
 });
 
 connection.connect((err) => {
