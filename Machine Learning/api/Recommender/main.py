@@ -298,12 +298,16 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def index():
 
-    # load data 
+    # load data
+    with open('test.json') as json_file:
+        data = json.load(json_file) 
+
+
 
     new_data = {
-        "User_Id" : [request.args.get("User_Id")],
-        "Place_Id": [request.args.get("Place_Id")],
-        "Place_Ratings" : [request.args.get("Place_Ratings")]
+        "User_Id" : data.get('User_Id'),
+        "Place_Id":  data.get('Place_Id'),
+        "Place_Ratings" : data.get('Place_Ratings')
 
         # "User_Id" : [2,2,2],
         # "Place_Id": [1,2,3],

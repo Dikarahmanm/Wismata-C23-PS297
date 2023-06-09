@@ -6,9 +6,8 @@ url = "http://127.0.0.1:5000/"
 
 f = open('test.json')
 
-# load data
-
-data = json.load(f)
+with open('test.json') as json_file:
+    data = json.load(json_file) 
 
 
 User_Id = data['User_Id']
