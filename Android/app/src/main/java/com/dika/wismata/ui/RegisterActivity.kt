@@ -19,7 +19,6 @@ class RegisterActivity : AppCompatActivity() {
 
         supportActionBar?.title = getString(R.string.Register)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setBackgroundDrawable(getColor(R.color.orange).toDrawable())
 
         binding.login.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
