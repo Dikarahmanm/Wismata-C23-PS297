@@ -231,8 +231,18 @@ model = tf.keras.models.load_model("Recommender_Model.h5")
 
 # Place_Id = sorted_items['Place_Id'].values.tolist()
 
-def get_sorted_place_ids(new_data, destination_fix, destination_jogja, model, scalerUser, scalerItem, scalerTarget):
-    df_pred = pd.DataFrame(new_data)
+def get_sorted_place_ids(User_Id, Place_Id, Place_Ratings, destination_fix, destination_jogja, model, scalerUser, scalerItem, scalerTarget):
+
+    new_data = {
+
+        'User_Id': User_Id,
+        'Place_Id': Place_Id,
+        'Place_Ratings': Place_Ratings
+
+    }
+
+
+    df_pred = pd.DataFrame(new_data, index=[0])
 
     user_vec = calculate_user_ratings(df_pred, destination_jogja=destination_jogja)
 
@@ -298,115 +308,45 @@ def get_sorted_place_ids(new_data, destination_fix, destination_jogja, model, sc
 app = Flask(__name__)
 
 
-@app.route('/api/recommender_destination', methods=['POST'])
-def ml_endpoint():
+@app.route('/', methods=['POST', 'GET'])
+def index():
 
-    env_vars = dotenv_values(".env")
 
-    SECRET_KEY = env_vars['SECRET_KEY']
+    # User_Id = request.args.get('User_Id')
+    # Place_Id = request.args.get('Place_Id')
+    # Place_Ratings = request.args.get('Place_Ratings')
 
-    # get the token from the request header
+    # User_Id = [3]
+    # Place_Id = [1]
+    # Place_Ratings = [5]
 
-    token = request.headers.get('Authorization').split(' ')[1]
+    # input request
 
-    # decode the token to get the user_id
+    User_Id = request.args.get('User_Id')
+    Place_Id = request.args.get('Place_Id')
+    Place_Ratings = request.args.get('Place_Ratings')
 
+    # Check if any of the variables is None or empty
+    if User_Id is None or Place_Id is None or Place_Ratings is None:
+        return jsonify({'error': 'Missing required parameters'})
+
+    # Convert variables to integers
     try:
-        # verify the token
-
-        decoded = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
-
-        # Access the user_id from the decoded token
-
-        User_Id = decoded['User_Id']
-
-        # Use the User_Id in machine learning function
-
-        result = ml_function(User_Id)
-
-        # return the result
-
-        return result
-
-    except jwt.ExpiredSignatureError:
-        return 'Invalid token', 401
-
-
-def ml_function(User_Id):
-
-    # load data from json file
-
-    # with open('test.json') as json_file:
-
-    #     data = json.load(json_file)
-
-
-    # load env variables from .env file
-    # Load environment variables from .env file
-    env_vars = dotenv_values(".env")
-
-    # Access the environment variables
-    host = env_vars['DB_HOST']
-    user = env_vars['DB_USER']
-    password = env_vars['DB_PASSWORD']
-    database = env_vars['DB_DATABASE']
-
-    # Use the variables in your code
-    print(host, user, password, database)
-
-
-    mydb = mysql.connector.connect(
-
-        host=host,
-        user=user,
-        password=password,
-        database=database
-
-    )
-
-    mycursor = mydb.cursor()
-
-    mycursor.execute("SELECT * FROM user_ratings WHERE User_Id = %s", (User_Id,)) 
-
-    myresult = mycursor.fetchall()
-
+        User_Id = int(User_Id)
+        Place_Id = int(Place_Id)
+        Place_Ratings = int(Place_Ratings)
+    except ValueError:
+        return jsonify({'error': 'Invalid parameter types'})
     
+    place_ids = get_sorted_place_ids(User_Id, Place_Id, Place_Ratings, destination_fix, destination_jogja, model, scalerUser, scalerItem, scalerTarget)
 
-    # convert to json 
-
-    data = json.dumps(myresult)
-
-    # convert to dict
-
-    data = json.loads(data)
-
-    
-    
-
-    
-        
-
-
-    new_data = {
-        # "User_Id" : data.get('User_Id'),
-        # "Place_Id":  data.get('Place_Id'),
-        # "Place_Ratings" : data.get('Place_Ratings')
-
-
-
-        # "User_Id" : [2,2,2],
-        # "Place_Id": [1,2,3],
-        # "Place_Ratings" : [3,5,6]
-
+    data = {
+        "Place_Id": place_ids
     }
 
-
-
-    sorted_destination = get_sorted_place_ids(new_data, destination_fix, destination_jogja, model, scalerUser, scalerItem, scalerTarget)
-
-    data = {"Place_Id" : sorted_destination}
-
     return jsonify(data)
+
+
 
 
 
