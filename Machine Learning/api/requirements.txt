@@ -3,3 +3,5 @@ gunicorn
 tensorflow
 numpy
 pillow
+pandas
+scikit-learn
