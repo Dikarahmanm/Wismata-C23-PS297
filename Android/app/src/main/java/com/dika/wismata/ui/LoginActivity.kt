@@ -21,6 +21,11 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
         customComponent()
+
+        binding.btnLogin.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun enableButton(status: Boolean) {
