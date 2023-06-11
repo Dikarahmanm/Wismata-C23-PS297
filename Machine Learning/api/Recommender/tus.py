@@ -1,12 +1,13 @@
 from flask import Flask, jsonify, request
-from inference import get_sorted_place_ids
 import mysql.connector
 from dotenv import dotenv_values
-import pandas as pd
 
 
- 
-#Load environment variables from .env file
+
+app = Flask(__name__)
+
+
+# Load environment variables from .env file
 
 env_vars = dotenv_values(".env")
 
@@ -39,12 +40,11 @@ mydb = mysql.connector.connect(
 )
 
 
-app = Flask(__name__)
+# load the data from the database
 
+@app.route('/', methods=['GET'])
 
-@app.route('/', methods=['POST', 'GET'])
 def index():
-
 
     mycursor = mydb.cursor()
 
@@ -78,49 +78,18 @@ def index():
     
             }
 
+        User_ID_login = 2
 
-    User_Id_login = None
+        result = data.get(User_ID_login, {})
 
-    if User_Id_login is None:
+        # retrive only place_id
 
-        User_Id_login = 1
-
-    
-
-    result = data.get(User_Id_login, {})
-
-    User_Id = result.get("User_Id", [])
-
-    Place_Id = result.get("Place_Id", [])
-
-    Place_Ratings = result.get("Place_Ratings", [])
-
-    new_data = {
-    
-        "User_Id" : User_Id,
-        "Place_Id": Place_Id,
-        "Place_Ratings" : Place_Ratings
-
-    }
-
-       
-    # get the sorted place ids
-
-    place_ids = get_sorted_place_ids(new_data)
-
-    data = {
-        "Place_Id": place_ids
-    }
-
-    return jsonify(data)
+        result = result.get("Place_Id", [])
 
 
+    return jsonify(result)
 
 
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
-
