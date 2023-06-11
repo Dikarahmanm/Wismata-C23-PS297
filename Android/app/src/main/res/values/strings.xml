@@ -22,4 +22,7 @@
     <string name="home">Home</string>
     <string name="explore">Explore</string>
     <string name="profile">Profile</string>
+    <string name="main_text">Where would you like to go?</string>
+    <string name="search">Search</string>
+    <string name="categoriestext">Categories</string>
 </resources>
