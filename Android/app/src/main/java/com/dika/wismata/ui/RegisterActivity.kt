@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.core.graphics.drawable.toDrawable
 import com.dika.wismata.R
 import com.dika.wismata.databinding.ActivityRegisterBinding
 

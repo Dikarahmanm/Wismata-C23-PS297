@@ -19,4 +19,7 @@
     <string name="umkm">UMKM</string>
     <string name="subTitle2">lokal di setiap destinasi</string>
     <string name="subTitle4">wisata Yogyakrta</string>
+    <string name="home">Home</string>
+    <string name="explore">Explore</string>
+    <string name="profile">Profile</string>
 </resources>
