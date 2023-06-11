@@ -22,6 +22,10 @@ app.use(express.static(path.join(__dirname, 'static')));
 app.use('/users', usersRoutes);
 app.use('/auth', usersRoutes);
 
+app.get('/', (req, res) => {
+    res.send('Tes bentar');
+  });
+
 app.post('/upload',upload.single('photo'),(req, res) => {
     res.json({
         message: 'Upload success'

@@ -87,6 +87,11 @@ const loginUser = async (req, body) => {
     });
   }
 
+  const getUserByEmail = (email) => {
+    const SQLQuery = `SELECT * FROM user WHERE email='${email}'`;
+  
+    return dbPool.execute(SQLQuery);
+  };
 
 module.exports = {
     getAllUsers,
@@ -94,5 +99,6 @@ module.exports = {
     createNewUser,
     updateUser,
     deleteUser,
-    loginUser
+    loginUser,
+    getUserByEmail
 }

@@ -116,7 +116,14 @@ const loginUser = async (req, res) => {
     }
   };
   
-
+  const getUserByEmail = async (email) => {
+    try {
+      const user = await UsersModel.findOne({ email });
+      return user;
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
 
 module.exports = {
     getAllUsers,
@@ -125,4 +132,5 @@ module.exports = {
     updateUser,
     deleteUser,
     loginUser,
+    getUserByEmail,
 }
