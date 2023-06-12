@@ -7,5 +7,5 @@ __pycache__/*
 # ignore all files with extension .pyc
 
 *.pyc
-
+*.env
 

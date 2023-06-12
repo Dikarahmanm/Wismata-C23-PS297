@@ -19,7 +19,10 @@ def index():
     price_test = request.args.get("price")
     prediction = recommend_rating(category_test, price_test)
     prediction = int(prediction)
-    return jsonify(prediction)
+    data = {
+        "Rating" : prediction
+    }
+    return jsonify(data)
 
 
 if __name__ == "__main__":

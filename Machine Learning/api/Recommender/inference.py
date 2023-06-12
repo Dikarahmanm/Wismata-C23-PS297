@@ -3,10 +3,9 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
-from flask import Flask, request, jsonify, session
 import mysql.connector
 from dotenv import dotenv_values
-import jwt
+
 
 destination = pd.read_csv('data/tourism_with_id.csv')
 rating = pd.read_csv('data/tourism_rating.csv')
@@ -231,8 +230,11 @@ model = tf.keras.models.load_model("Recommender_Model.h5")
 
 # Place_Id = sorted_items['Place_Id'].values.tolist()
 
-def get_sorted_place_ids(new_data, destination_fix, destination_jogja, model, scalerUser, scalerItem, scalerTarget):
+def get_sorted_place_ids(new_data):
+
     df_pred = pd.DataFrame(new_data)
+
+    
 
     user_vec = calculate_user_ratings(df_pred, destination_jogja=destination_jogja)
 
@@ -264,155 +266,3 @@ def get_sorted_place_ids(new_data, destination_fix, destination_jogja, model, sc
     place_ids = sorted_items['Place_Id'].values.tolist()
 
     return place_ids
-
-
-# print(get_sorted_place_ids(new_data, destination_fix, destination_jogja, model, scalerUser, scalerItem, scalerTarget))
-
-
-# # # convert to json
-
-# json_str = json.dumps(Place_Ids)
-
-# # convert to dict
-
-# json_dict = json.loads(json_str)
-
-# # write to json file
-
-# with open('Place_Id.json', 'w') as json_file:
-
-#     json.dump(json_dict, json_file)
-
-
-
-# def print_prediction(sorted_items, sorted_ypu, num_recommend, destination_jogja=destination_jogja):
-#     res = pd.merge(sorted_items[['Place_Id']], destination_jogja[["Place_Id", "Place_Name", "Category", "Rating"]], on="Place_Id")[:num_recommend]
-#     res["Predict_Rating"] = sorted_ypu[:num_recommend]
-#     return res
-
-# print_prediction(sorted_items, sorted_ypu, 126, destination_jogja=destination_jogja)
-
-
-
-
-app = Flask(__name__)
-
-
-@app.route('/api/recommender_destination', methods=['POST'])
-def ml_endpoint():
-
-    env_vars = dotenv_values(".env")
-
-    SECRET_KEY = env_vars['SECRET_KEY']
-
-    # get the token from the request header
-
-    token = request.headers.get('Authorization').split(' ')[1]
-
-    # decode the token to get the user_id
-
-    try:
-        # verify the token
-
-        decoded = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
-
-        # Access the user_id from the decoded token
-
-        User_Id = decoded['User_Id']
-
-        # Use the User_Id in machine learning function
-
-        result = ml_function(User_Id)
-
-        # return the result
-
-        return result
-
-    except jwt.ExpiredSignatureError:
-        return 'Invalid token', 401
-
-
-def ml_function(User_Id):
-
-    # load data from json file
-
-    # with open('test.json') as json_file:
-
-    #     data = json.load(json_file)
-
-
-    # load env variables from .env file
-    # Load environment variables from .env file
-    env_vars = dotenv_values(".env")
-
-    # Access the environment variables
-    host = env_vars['DB_HOST']
-    user = env_vars['DB_USER']
-    password = env_vars['DB_PASSWORD']
-    database = env_vars['DB_DATABASE']
-
-    # Use the variables in your code
-    print(host, user, password, database)
-
-
-    mydb = mysql.connector.connect(
-
-        host=host,
-        user=user,
-        password=password,
-        database=database
-
-    )
-
-    mycursor = mydb.cursor()
-
-    mycursor.execute("SELECT * FROM user_ratings WHERE User_Id = %s", (User_Id,)) 
-
-    myresult = mycursor.fetchall()
-
-    
-
-    # convert to json 
-
-    data = json.dumps(myresult)
-
-    # convert to dict
-
-    data = json.loads(data)
-
-    
-    
-
-    
-        
-
-
-    new_data = {
-        # "User_Id" : data.get('User_Id'),
-        # "Place_Id":  data.get('Place_Id'),
-        # "Place_Ratings" : data.get('Place_Ratings')
-
-
-
-        # "User_Id" : [2,2,2],
-        # "Place_Id": [1,2,3],
-        # "Place_Ratings" : [3,5,6]
-
-    }
-
-
-
-    sorted_destination = get_sorted_place_ids(new_data, destination_fix, destination_jogja, model, scalerUser, scalerItem, scalerTarget)
-
-    data = {"Place_Id" : sorted_destination}
-
-    return jsonify(data)
-
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
-
-
-
