@@ -55,6 +55,10 @@ router.post('/login', async (req, res) => {
     }
   });
 
+  // GET all wisata
   router.get('/AllWisata', UserController.getAllWisata);
+
+  // GET wisata by id
+router.get('/wisata/:idWisata', UserController.getWisata);
 
 module.exports = router;

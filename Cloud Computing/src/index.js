@@ -44,6 +44,12 @@ const { getAllWisata } = require('./src/controller/users');
 // Route endpoint untuk getAllWisata
 app.get('/AllWisata', getAllWisata);
 
+// Import getWisata dari usersController
+const { getWisata } = require('./src/controller/users');
+
+// Route endpoint untuk getWisata
+app.get('/wisata/:idWisata', getWisata);
+
 app.listen(PORT, () => {
     console.log(`Server successfully running on ${PORT}`);
 })
