@@ -125,6 +125,22 @@ const loginUser = async (req, res) => {
     }
   };
 
+  // Mengambil semua data wisata
+const getAllWisata = async (req, res) => {
+    try {
+      const allWisata = await UserModel.getAllWisata();
+      res.json({
+        message: 'Success',
+        data: allWisata,
+      });
+    } catch (error) {
+      res.status(500).json({
+        message: 'Server Error',
+        error: error.message,
+      });
+    }
+  };
+
 module.exports = {
     getAllUsers,
     getUser,
@@ -133,4 +149,5 @@ module.exports = {
     deleteUser,
     loginUser,
     getUserByEmail,
+    getAllWisata,
 }

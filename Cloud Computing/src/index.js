@@ -23,7 +23,7 @@ app.use('/users', usersRoutes);
 app.use('/auth', usersRoutes);
 
 app.get('/', (req, res) => {
-    res.send('Tes bentar');
+    res.send('Route default');
   });
 
 app.post('/upload',upload.single('photo'),(req, res) => {
@@ -37,6 +37,12 @@ app.use((err, req, res, next) => {
         message: err.message
     })
 })
+
+// Import getAllWisata dari usersController
+const { getAllWisata } = require('./src/controller/users');
+
+// Route endpoint untuk getAllWisata
+app.get('/AllWisata', getAllWisata);
 
 app.listen(PORT, () => {
     console.log(`Server successfully running on ${PORT}`);

@@ -93,6 +93,11 @@ const loginUser = async (req, body) => {
     return dbPool.execute(SQLQuery);
   };
 
+  const getAllWisata = () => {
+    const SQLQuery = 'SELECT * FROM wisata';
+    return dbPool.execute(SQLQuery);
+  };
+
 module.exports = {
     getAllUsers,
     getUser,
@@ -100,5 +105,6 @@ module.exports = {
     updateUser,
     deleteUser,
     loginUser,
-    getUserByEmail
+    getUserByEmail,
+    getAllWisata,
 }

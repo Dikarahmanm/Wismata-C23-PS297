@@ -55,4 +55,6 @@ router.post('/login', async (req, res) => {
     }
   });
 
+  router.get('/AllWisata', UserController.getAllWisata);
+
 module.exports = router;
