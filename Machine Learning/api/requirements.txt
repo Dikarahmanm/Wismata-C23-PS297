@@ -1,0 +1,9 @@
+Flask
+gunicorn
+tensorflow
+numpy
+pillow
+pandas
+scikit-learn
+mysql-connector-python
+python-dotenv
