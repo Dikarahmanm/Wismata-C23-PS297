@@ -141,6 +141,22 @@ const getAllWisata = async (req, res) => {
     }
   };
 
+  const getWisata = async (req, res) => {
+    try {
+      const { idWisata } = req.params;
+  
+      const wisata = await UserModel.getWisata(idWisata);
+  
+      if (wisata.length === 0) {
+        return res.status(404).json({ message: 'Wisata tidak ditemukan' });
+      }
+  
+      res.json({ message: 'Success', data: wisata[0] });
+    } catch (error) {
+      res.status(500).json({ message: 'Server Error', error: error.message });
+    }
+  };
+
 module.exports = {
     getAllUsers,
     getUser,
@@ -150,4 +166,5 @@ module.exports = {
     loginUser,
     getUserByEmail,
     getAllWisata,
+    getWisata,
 }
