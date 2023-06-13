@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
-from inference import recommend_rating
-from utils import get_sorted_IdWisatas
+from inference import recommend_rating, get_sorted_IdWisatas
 import mysql.connector
 from dotenv import dotenv_values
 
@@ -87,7 +86,7 @@ def ml_function(IdUser_Login):
 
     if IdUser_login is None:
 
-        IdUser_login = 2
+        IdUser_login = 1
 
     # if user id is provided, use that user id
 
@@ -147,4 +146,4 @@ def recommender():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=8080, debug=True)
