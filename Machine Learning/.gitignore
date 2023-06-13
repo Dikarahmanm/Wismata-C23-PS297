@@ -9,3 +9,10 @@ __pycache__/*
 *.pyc
 *.env
 
+#ignore .ipynb_checkpoints folder
+
+.ipynb_checkpoints/*
+
+
+```
+
