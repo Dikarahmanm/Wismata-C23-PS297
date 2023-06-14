@@ -1,6 +1,0 @@
-def say():
-    print('hello')
-
-
-
-
