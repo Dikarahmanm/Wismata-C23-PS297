@@ -5,13 +5,16 @@ const getAllWisata = () => {
   return dbPool.execute(SQLQuery);
 };
 
-const Wisata = {};
 
-Wisata.findById = (idWisata) => {
-  return db.query('SELECT * FROM wisata WHERE idWisata = ?', [idWisata]);
-};
+const updateWisata = (body, idWisata) => {
+  const SQLQuery = `  UPDATE user 
+                      SET email='${body.email}', password='${hashedPassword}' 
+                      WHERE id=${idWisata}`;
+
+  return dbPool.execute(SQLQuery);
+}
 
 module.exports = {
   getAllWisata,
-  Wisata
+  updateWisata
 };

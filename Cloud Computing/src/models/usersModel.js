@@ -7,8 +7,8 @@ const getAllUsers = () => {
     return dbPool.execute(SQLQuery);
 }
 
-const getUser = (idUser) => {
-    const SQLQuery = `SELECT * FROM user WHERE id=${idUser}`;
+const getUser = (body) => {
+    const SQLQuery = `SELECT * FROM profile WHERE userEmail='${body.email}'`;
 
     return dbPool.execute(SQLQuery);
 }

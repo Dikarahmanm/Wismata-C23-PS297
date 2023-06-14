@@ -18,13 +18,13 @@ const getAllUsers = async (req, res) => {
 }
 
 const getUser = async (req, res) => {
-    const {idUser} = req.params;
+    const { body } = req;
     try {
-        const [data] = await UsersModel.getUser(idUser);
+        const profile = await UsersModel.getUser(body);
     
         res.json({
             message: 'GET user success',
-            data: data
+            data: profile[0][0]
         })
     } catch (error) {
         res.status(500).json({

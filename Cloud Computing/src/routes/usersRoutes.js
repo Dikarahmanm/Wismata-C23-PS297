@@ -11,7 +11,7 @@ router.post('/', UserController.createNewUser);
 router.get('/', UserController.getAllUsers);
 
 // READ - GET
-router.get('/:idUser', UserController.getUser);
+router.post('/profile', UserController.getUser);
 
 // UPDATE - PATCH
 router.patch('/:idUser', UserController.updateUser);

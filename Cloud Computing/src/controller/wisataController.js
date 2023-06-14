@@ -1,8 +1,5 @@
 const WisataModel = require('../models/wisataModel');
-const Wisata = require('../models/wisataModel');
-const db = require('../config/database');
-
-const getAllWisata = async (req, res) => {
+const getAllWisata = async (res) => {
   try {
     const [data] = await WisataModel.getAllWisata();
     res.json({
@@ -56,7 +53,27 @@ const getWisata = async (req, res) => {
     }
   };
 
+  const updateWisata = async (req, res) => {
+    const {body} = req;
+    const {idWisata} = req.params;
+    try {
+        await WisataModel.updateWisata(body, idWisata);
+        res.json({
+            message: 'UPDATE wisata success',
+            data: {
+                ...body
+            },
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'Server Error',
+            serverMessage: error,
+        })
+    }
+}
+
 module.exports = {
   getAllWisata,
   getWisata,
+  updateWisata,
 };
