@@ -1,6 +1,7 @@
 const dbPool = require('../config/database');
 const encrypt = require('bcrypt');
 
+
 const getAllUsers = () => {
     const SQLQuery = 'SELECT * FROM user';
 
@@ -12,7 +13,6 @@ const getUser = (idUser) => {
 
     return dbPool.execute(SQLQuery);
 }
-
 
 const createNewUser = async (body) => {
     const connection = await dbPool.getConnection();
@@ -60,42 +60,40 @@ const deleteUser = (idUser) => {
     return dbPool.execute(SQLQuery);
 }
 
-const loginUser = async (req, body) => {
-    const connection = await dbPool.getConnection();
-    await connection.beginTransaction();
-
+const loginUser = async (email, password) => {
     const query = 'SELECT * FROM user WHERE email = ?';
-    db.query(query, [email], async (error, results) => {
+    dbPool.query(query, email, async (error, results) => {
       if (error) {
         console.error('Error executing SQL query:', error);
         res.status(500).json({ error: 'Internal server error' });
         return;
       }
     
-      if (results.length === 1) {
-        const user = results[0];
-        const isPasswordMatch = await bcrypt.compare(password, user.password);
-    
-        if (isPasswordMatch) {
-          res.json({ message: 'Login successful' });
-        } else {
-          res.status(401).json({ error: 'Invalid username or password' });
-        }
-      } else {
-        res.status(401).json({ error: 'Invalid username or password' });
+      if (results.length === 0) {
+        return res.status(401).send({
+          msg: 'Invalid email or password'
+        });
       }
-    });
-  }
 
-  const getUserByEmail = (email) => {
-    const SQLQuery = 'SELECT * FROM user WHERE email = ?';
-    return dbPool.execute(SQLQuery, [email])
-      .then(([rows]) => rows[0]);
-  };
-  
-  const verifyPassword = (password, hashedPassword) => {
-    return bcrypt.compare(password, hashedPassword);
-  };
+      //Check password
+      bcrypt.compare(password,result[0].password).then(isMatch=>{
+               
+      if(isMatch===false){
+        return res.status(401).send({
+          msg:"email or Password is incorrect "
+          })
+        }
+
+      //generate token
+      const token=jwt.sign({id:result[0].id.toString()},process.env.ACCESS_TOKEN_SECRET)   
+        return res.status(200).send({
+        msg:"logged in successfully",
+        user:result[0],
+        token
+      })
+    });
+  })
+}
 
 
 module.exports = {
@@ -105,6 +103,4 @@ module.exports = {
     updateUser,
     deleteUser,
     loginUser,
-    getUserByEmail,
-    verifyPassword,
 }

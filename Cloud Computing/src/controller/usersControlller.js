@@ -1,5 +1,5 @@
 const UsersModel = require('../models/usersModel');
-
+const bcrypt = require('bcrypt');
 const getAllUsers = async (req, res) => {
     try {
         const [data] = await UsersModel.getAllUsers();
@@ -94,25 +94,23 @@ const deleteUser = async (req, res) => {
 }
 
 const loginUser = async (req, res) => {
-    const { body } = req;
-  
-    if (!body.email || !body.password) {
-      return res.status(400).json({
-        message: 'Invalid Data',
-        data: null,
-      });
+    const { email, password } = req.body;
+
+    if(req.body.email.trim()===''||req.body.password.trim()===''){
+        return res.status(400).send({msg:"email or password must not be empty"})
+    
     }
-  
     try {
-      await UsersModel.loginUser(body);
-      res.status(201).json({
-        message: 'Login user success',
-      });
+        const result = await UsersModel.loginUser(email, password);
+        res.json({
+            message: 'Login user success',
+            data: result
+        })
     } catch (error) {
-      res.status(500).json({
-        message: 'Server Error',
-        serverMessage: error,
-      });
+        res.status(500).json({
+            message: 'Server Error',
+            serverMessage: error,
+        })
     }
   };
   
