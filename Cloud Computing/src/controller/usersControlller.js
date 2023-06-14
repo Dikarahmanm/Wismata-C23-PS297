@@ -1,4 +1,4 @@
-const UsersModel = require('../models/users');
+const UsersModel = require('../models/usersModel');
 
 const getAllUsers = async (req, res) => {
     try {
@@ -116,46 +116,7 @@ const loginUser = async (req, res) => {
     }
   };
   
-  const getUserByEmail = async (email) => {
-    try {
-      const user = await UsersModel.findOne({ email });
-      return user;
-    } catch (error) {
-      throw new Error(error);
-    }
-  };
-
-  // Mengambil semua data wisata
-const getAllWisata = async (req, res) => {
-    try {
-      const allWisata = await UserModel.getAllWisata();
-      res.json({
-        message: 'Success',
-        data: allWisata,
-      });
-    } catch (error) {
-      res.status(500).json({
-        message: 'Server Error',
-        error: error.message,
-      });
-    }
-  };
-
-  const getWisata = async (req, res) => {
-    try {
-      const { idWisata } = req.params;
   
-      const wisata = await UserModel.getWisata(idWisata);
-  
-      if (wisata.length === 0) {
-        return res.status(404).json({ message: 'Wisata tidak ditemukan' });
-      }
-  
-      res.json({ message: 'Success', data: wisata[0] });
-    } catch (error) {
-      res.status(500).json({ message: 'Server Error', error: error.message });
-    }
-  };
 
 module.exports = {
     getAllUsers,
@@ -164,7 +125,4 @@ module.exports = {
     updateUser,
     deleteUser,
     loginUser,
-    getUserByEmail,
-    getAllWisata,
-    getWisata,
 }

@@ -88,20 +88,15 @@ const loginUser = async (req, body) => {
   }
 
   const getUserByEmail = (email) => {
-    const SQLQuery = `SELECT * FROM user WHERE email='${email}'`;
+    const SQLQuery = 'SELECT * FROM users WHERE email = ?';
+    return dbPool.execute(SQLQuery, [email])
+      .then(([rows]) => rows[0]);
+  };
   
-    return dbPool.execute(SQLQuery);
+  const verifyPassword = (password, hashedPassword) => {
+    return bcrypt.compare(password, hashedPassword);
   };
 
-  const getAllWisata = () => {
-    const SQLQuery = 'SELECT * FROM wisata';
-    return dbPool.execute(SQLQuery);
-  };
-
-  const getWisata = (idWisata) => {
-    const SQLQuery = `SELECT * FROM wisata WHERE idWisata = ${idWisata}`;
-    return dbPool.execute(SQLQuery);
-  };
 
 module.exports = {
     getAllUsers,
@@ -111,6 +106,5 @@ module.exports = {
     deleteUser,
     loginUser,
     getUserByEmail,
-    getAllWisata,
-    getWisata,
+    verifyPassword,
 }
