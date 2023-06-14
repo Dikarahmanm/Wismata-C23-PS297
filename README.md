@@ -1,9 +1,20 @@
 # Wismata App
 
-# About App
+## About App
 
-This app ...
+Discover the best of local businesses on your travels. Our app helps you find the best places to eat and shop for your best travel experience.
 
+<hr>
+
+## Features
+
+
+
+
+
+## Our Team 
+
+<hr>
 
 |            Name           |  Bangkit ID |            Role           |               GitHub Account              |
 |:-------------------------:|:-----------:|:-------------------------:|:-----------------------------------------:|
@@ -15,4 +26,16 @@ This app ...
 | Wellyaz Sayidi Atmaja     | C210DSX1597 | Cloud Computing Engineer  |       https://github.com/wellyazzsa       |
 
 
-FRAMEWORK AND TOOLS
+## How to run this application?
+
+
+
+
+
+## FRAMEWORK AND TOOLS
+
+<hr>
+
+
+
+
