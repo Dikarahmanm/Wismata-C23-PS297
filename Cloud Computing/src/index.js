@@ -27,7 +27,6 @@ app.use('/login',authRoutes);
 app.use('/AllWisata', wisataRoutes);
 app.use('/wisata', wisataRoutes);
 
-
 app.get('/', (req, res) => {
     res.send('Route default');
   });
