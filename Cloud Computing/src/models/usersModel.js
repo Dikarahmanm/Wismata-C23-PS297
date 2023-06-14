@@ -1,7 +1,6 @@
 const dbPool = require('../config/database');
 const encrypt = require('bcrypt');
 
-
 const getAllUsers = () => {
     const SQLQuery = 'SELECT * FROM user';
 
@@ -60,47 +59,24 @@ const deleteUser = (idUser) => {
     return dbPool.execute(SQLQuery);
 }
 
-const loginUser = async (email, password) => {
-    const query = 'SELECT * FROM user WHERE email = ?';
-    dbPool.query(query, email, async (error, results) => {
-      if (error) {
-        console.error('Error executing SQL query:', error);
-        res.status(500).json({ error: 'Internal server error' });
-        return;
-      }
-    
-      if (results.length === 0) {
-        return res.status(401).send({
-          msg: 'Invalid email or password'
-        });
-      }
+const getUserbyEmail = (body) => {
+ const SQLQuery = `SELECT * FROM user WHERE email = ?`;
+ return dbPool.execute(SQLQuery, [body.email]);
+};
 
-      //Check password
-      bcrypt.compare(password,result[0].password).then(isMatch=>{
-               
-      if(isMatch===false){
-        return res.status(401).send({
-          msg:"email or Password is incorrect "
-          })
-        }
+const loginUser = (refreshToken, userId) => {
+  const SQLQuery = `  UPDATE user SET token='${refreshToken}' WHERE id=${userId}`;
 
-      //generate token
-      const token=jwt.sign({id:result[0].id.toString()},process.env.ACCESS_TOKEN_SECRET)   
-        return res.status(200).send({
-        msg:"logged in successfully",
-        user:result[0],
-        token
-      })
-    });
-  })
-}
+  return dbPool.execute(SQLQuery);
+ };
 
 
 module.exports = {
     getAllUsers,
     getUser,
+    loginUser,
     createNewUser,
     updateUser,
     deleteUser,
-    loginUser,
+    getUserbyEmail,
 }
