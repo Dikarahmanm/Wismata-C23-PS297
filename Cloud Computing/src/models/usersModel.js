@@ -88,7 +88,7 @@ const loginUser = async (req, body) => {
   }
 
   const getUserByEmail = (email) => {
-    const SQLQuery = 'SELECT * FROM users WHERE email = ?';
+    const SQLQuery = 'SELECT * FROM user WHERE email = ?';
     return dbPool.execute(SQLQuery, [email])
       .then(([rows]) => rows[0]);
   };
