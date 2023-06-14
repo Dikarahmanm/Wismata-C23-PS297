@@ -5,13 +5,22 @@ const getAllWisata = () => {
   return dbPool.execute(SQLQuery);
 };
 
-const Wisata = {};
+const getWisataById = (idWisata) => {
+  const SQLQuery = 'SELECT * FROM wisata WHERE idWisata = ?';
+  return dbPool.execute(SQLQuery, [idWisata])
+    .then(([rows]) => rows[0]);
+};
 
-Wisata.findById = (idWisata) => {
-  return db.query('SELECT * FROM wisata WHERE idWisata = ?', [idWisata]);
+const getUMKMByWisataId = (idWisata) => {
+  const SQLQuery = 'SELECT * FROM umkm WHERE idWisata = ?';
+  return dbPool.execute(SQLQuery, [idWisata])
+    .then(([rows]) => rows);
 };
 
 module.exports = {
   getAllWisata,
-  Wisata
+  getWisataById,
+  getUMKMByWisataId,
+
+  
 };

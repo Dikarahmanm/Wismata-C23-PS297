@@ -7,12 +7,12 @@ const login = async (req, res) => {
   try {
     const user = await UsersModel.getUserByEmail(email);
     if (!user) {
-      return res.status(401).json({ message: 'Invalid email or password' });
+      return res.status(401).json({ message: 'User tidak ditemukan' });
     }
 
     const isPasswordValid = await UsersModel.verifyPassword(password, user.password);
     if (!isPasswordValid) {
-      return res.status(401).json({ message: 'Invalid email or password' });
+      return res.status(401).json({ message: 'Invalid password' });
     }
 
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });

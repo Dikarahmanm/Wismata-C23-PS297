@@ -18,43 +18,22 @@ const getAllWisata = async (req, res) => {
 };
 
 const getWisata = async (req, res) => {
-    const { idWisata } = req.params;
-  
-    try {
-      const [wisata] = await Wisata.findById(idWisata);
-  
-      if (!wisata) {
-        return res.status(404).json({ message: 'Wisata not found' });
-      }
-  
-      const umkmQuery = `
-        SELECT * FROM umkm1 WHERE idWisata = ${idWisata};
-        SELECT * FROM umkm2 WHERE idWisata = ${idWisata};
-        SELECT * FROM umkm3 WHERE idWisata = ${idWisata};
-      `;
-  
-      db.query(umkmQuery, (err, results) => {
-        if (err) {
-          console.error(err);
-          return res.status(500).json({ message: 'Internal server error' });
-        }
-  
-        const [umkm1, umkm2, umkm3] = results;
-  
-        const data = {
-          wisata,
-          umkm1,
-          umkm2,
-          umkm3,
-        };
-  
-        res.json(data);
-      });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal server error' });
+  const { idWisata } = req.params;
+
+  try {
+    const wisata = await Wisata.getWisataById(idWisata);
+    const umkm = await Wisata.getUMKMByWisataId(idWisata);
+
+    if (!wisata) {
+      return res.status(404).json({ error: 'Wisata tidak ditemukan' });
     }
-  };
+
+    res.json({ wisata, umkm });
+  } catch (error) {
+    console.error('Error getting wisata:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
 
 module.exports = {
   getAllWisata,
