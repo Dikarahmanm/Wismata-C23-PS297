@@ -26,4 +26,5 @@
     <string name="search">Search</string>
     <string name="categoriestext">Categories</string>
     <string name="welcomeText">Where would \nyou like to go?</string>
+    <string name="action_save">Save</string>
 </resources>
