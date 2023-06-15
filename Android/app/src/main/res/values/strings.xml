@@ -36,4 +36,20 @@
     <string name="password_empty">Password cannot be empty</string>
     <string name="confirm_password_empty">Confirm Password cannot be empty</string>
     <string name="invalid_name">Name must be at least 3 characters</string>
+    <string name="nearest_umkm">Nearest UMKM</string>
+    <string name="view_all">View All</string>
+    <string name="rate_this_place">Rate this place</string>
+    <string name="detail_destination">Detail Destination</string>
+    <string name="failed_to_get_data">Failed to get data</string>
+    <string name="textview">Malioboro</string>
+    <string name="rating">4.7</string>
+    <string name="tvimagewisata">ImageWisata</string>
+    <string name="filter">filter list</string>
+    <string name="categoryBahari">Bahari</string>
+    <string name="categoryBud">Budaya</string>
+    <string name="categorylam">Cagar Alam</string>
+    <string name="categorystore">Pusat Belanja</string>
+    <string name="categoryhib">Taman</string>
+    <string name="recomentext">Recomended Destination</string>
+
 </resources>

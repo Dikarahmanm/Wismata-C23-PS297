@@ -1,6 +1,7 @@
 package com.dika.wismata.network.database
 
 import com.dika.wismata.network.api.ApiService
+import com.dika.wismata.network.model.DetailWisataModel
 import com.dika.wismata.network.model.Register
 import com.dika.wismata.utils.PreferenceManager
 import retrofit2.Call
@@ -25,6 +26,10 @@ class Repository(
             "role" to role
         )
         return apiService.userRegister(user)
+    }
+
+    fun wisataById(id: String) : Call<DetailWisataModel> {
+        return apiService.getWisataById(id)
     }
 
     companion object {

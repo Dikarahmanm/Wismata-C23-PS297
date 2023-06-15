@@ -28,7 +28,7 @@ const getWisata = async (req, res) => {
       return res.status(404).json({ error: 'Wisata tidak ditemukan' });
     }
 
-    res.json({ wisata, umkm });
+    res.json({ message:'Success', wisata, umkm });
   } catch (error) {
     console.error('Error getting wisata:', error);
     res.status(500).json({ error: 'Internal server error' });
