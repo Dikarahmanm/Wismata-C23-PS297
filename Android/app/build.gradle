@@ -59,4 +59,8 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.1"
     implementation "com.squareup.okhttp3:okhttp:4.9.1"
     implementation "hu.autsoft:krate:2.0.0"
+
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+    implementation "androidx.activity:activity-ktx:1.7.2"
+    implementation "androidx.fragment:fragment-ktx:1.6.0"
 }
