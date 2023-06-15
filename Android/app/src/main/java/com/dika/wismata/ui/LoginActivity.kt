@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import com.dika.wismata.MainActivity
 import com.dika.wismata.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -20,6 +21,11 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
         customComponent()
+
+        binding.btnLogin.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun enableButton(status: Boolean) {

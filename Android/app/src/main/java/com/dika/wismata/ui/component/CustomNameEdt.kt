@@ -6,9 +6,10 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
 import com.dika.wismata.R
 
-class CustomNameEdt: AppCompatEditText {
+class CustomNameEdt : AppCompatEditText {
 
     private lateinit var personIcon: Drawable
 
@@ -31,6 +32,14 @@ class CustomNameEdt: AppCompatEditText {
     private fun init() {
         personIcon = ContextCompat.getDrawable(context, R.drawable.ic_person_24) as Drawable
         compoundDrawablePadding = 16
+
+        addTextChangedListener(onTextChanged = { text, _, _, _ ->
+            if (!text.isNullOrEmpty()) {
+                if (text.length < 3) {
+                    error = context.getString(R.string.invalid_name)
+                }
+            }
+        })
     }
 
     private fun setButtonDrawables(

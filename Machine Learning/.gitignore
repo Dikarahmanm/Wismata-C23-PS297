@@ -7,5 +7,12 @@ __pycache__/*
 # ignore all files with extension .pyc
 
 *.pyc
+*.env
 
+#ignore .ipynb_checkpoints folder
+
+.ipynb_checkpoints/*
+
+
+```
 

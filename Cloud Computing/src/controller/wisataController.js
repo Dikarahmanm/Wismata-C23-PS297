@@ -29,6 +29,7 @@ const getWisata = async (req, res) => {
     }
 
     res.json({ message : 'Success',wisata, umkm });
+
   } catch (error) {
     console.error('Error getting wisata:', error);
     res.status(500).json({ error: 'Internal server error' });
