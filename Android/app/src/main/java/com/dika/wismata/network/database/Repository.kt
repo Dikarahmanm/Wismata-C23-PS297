@@ -1,13 +1,8 @@
 package com.dika.wismata.network.database
 
-import androidx.lifecycle.LiveData
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
 import com.dika.wismata.network.api.ApiService
 import com.dika.wismata.network.model.DetailWisataModel
 import com.dika.wismata.network.model.Register
-import com.dika.wismata.network.model.UmkmItem
 import com.dika.wismata.network.model.WisataMain
 import com.dika.wismata.utils.PreferenceManager
 import retrofit2.Call

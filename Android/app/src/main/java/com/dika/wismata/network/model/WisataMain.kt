@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 data class WisataMain(
 
 	@field:SerializedName("data")
-	val data: DataItem? = null,
+	val data: List<DataItem?>? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null

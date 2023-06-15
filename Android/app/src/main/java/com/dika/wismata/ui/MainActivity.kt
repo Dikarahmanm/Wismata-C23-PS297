@@ -1,21 +1,24 @@
 package com.dika.wismata.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dika.wismata.R
 import com.dika.wismata.adapter.MainAdapter
 import com.dika.wismata.databinding.ActivityMainBinding
-import com.dika.wismata.network.model.WisataMain
+import com.dika.wismata.network.model.DataItem
+import com.dika.wismata.network.model.Wisata
+import com.dika.wismata.utils.OnItemClickAdapter
 import com.dika.wismata.viewmodel.MainViewModel
 import com.dika.wismata.viewmodel.ViewModelFactory
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnItemClickAdapter {
     private lateinit var binding: ActivityMainBinding
     private lateinit var wisataAdapter: MainAdapter
     private val viewModel: MainViewModel by viewModels {
@@ -29,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        wisataAdapter = MainAdapter(this)
+        wisataAdapter = MainAdapter(this, this)
 
         binding.apply {
             rvRecomenWisata.setHasFixedSize(true)
@@ -47,17 +50,30 @@ class MainActivity : AppCompatActivity() {
             setHasFixedSize(true)
         }
         viewModel.setWisata()
-        doLoading(true)
-        viewModel.message.observe(this) { message ->
-            Log.e("MainActivity", message.toString())
+        viewModel.apply {
+            doLoading(true)
+            getListWisata().observe(this@MainActivity) {
+                if (it != null) {
+                    doLoading(false)
+                    wisataAdapter.setListWisata(it.data as List<DataItem>)
+                }
+            }
+
         }
     }
-
     private fun doLoading(status: Boolean) {
         if (status) {
             binding.progressBar.visibility = View.VISIBLE
         } else {
             binding.progressBar.visibility = View.GONE
         }
+
+    }
+
+    override fun onItemClick(dataItem: DataItem, optionsCompat: ActivityOptionsCompat) {
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra(DetailActivity.EXTRA_ID, dataItem.idWisata)
+        startActivity(intent, optionsCompat.toBundle())
     }
 }
+

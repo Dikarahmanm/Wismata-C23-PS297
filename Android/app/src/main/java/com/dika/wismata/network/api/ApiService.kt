@@ -21,6 +21,6 @@ interface ApiService {
         @Path("id") id: String
     ): Call<DetailWisataModel>
 
-    @GET("recommendation")
+    @GET("api/recommendation")
     fun getRecomWisata(): Call<WisataMain>
 }
