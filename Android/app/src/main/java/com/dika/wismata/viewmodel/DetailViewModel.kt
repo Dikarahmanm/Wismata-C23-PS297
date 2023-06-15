@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.dika.wismata.network.database.Repository
 import com.dika.wismata.network.model.DetailWisataModel
 import retrofit2.Call
@@ -16,6 +17,8 @@ class DetailViewModel(private val repository: Repository) : ViewModel() {
     val message: LiveData<String?> = _message
 
     val detailWisata = MutableLiveData<DetailWisataModel>()
+
+    lateinit var listUmkm: LiveData<List<DetailWisataModel>>
 
     fun getDetailWisata(): LiveData<DetailWisataModel> {
         return detailWisata
@@ -34,6 +37,7 @@ class DetailViewModel(private val repository: Repository) : ViewModel() {
                     _message.value = "Success"
                 }
             }
+
             override fun onFailure(call: Call<DetailWisataModel>, t: Throwable) {
                 _message.value = "Server Error"
             }

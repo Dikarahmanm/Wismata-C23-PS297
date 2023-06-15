@@ -1,8 +1,13 @@
 package com.dika.wismata.network.database
 
+import androidx.lifecycle.LiveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.dika.wismata.network.api.ApiService
 import com.dika.wismata.network.model.DetailWisataModel
 import com.dika.wismata.network.model.Register
+import com.dika.wismata.network.model.UmkmItem
 import com.dika.wismata.utils.PreferenceManager
 import retrofit2.Call
 
@@ -28,7 +33,7 @@ class Repository(
         return apiService.userRegister(user)
     }
 
-    fun wisataById(id: String) : Call<DetailWisataModel> {
+    fun wisataById(id: String): Call<DetailWisataModel> {
         return apiService.getWisataById(id)
     }
 
