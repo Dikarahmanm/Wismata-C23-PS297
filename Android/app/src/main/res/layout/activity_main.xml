@@ -32,323 +32,331 @@
         app:menu="@menu/bottom_navigation_menu" />
 
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText"
-        android:layout_width="333dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/search_bar_rounded"
-        android:drawableStart="@drawable/ic_search_24"
-        android:hint="@string/search"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColorHint="#BF360C"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!-- End of TextInputLayout -->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        android:layout_width="318dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        app:boxBackgroundColor="@android:color/white"
+        app:boxCornerRadiusBottomEnd="4dp"
+        app:boxCornerRadiusBottomStart="4dp"
+        app:boxCornerRadiusTopEnd="4dp"
+        app:boxCornerRadiusTopStart="4dp"
+        app:boxStrokeColor="@color/white"
+        app:boxStrokeWidth="2dp"
+        app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
         app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
-        app:layout_constraintVertical_bias="0.035" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/welcomeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditText"
+            android:layout_width="315dp"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:drawableStart="@drawable/ic_search_24"
+            android:drawablePadding="8dp"
+            android:hint="@string/search"
+            android:inputType="textPersonName"
+            android:textColorHint="#DD2C00"
+            android:textSize="13sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="8dp"
         android:contentDescription="@string/filter"
         app:icon="@drawable/ic_filter_list_"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textInputEditText"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textInputEditText"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toTopOf="@+id/textInputLayout"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/tvCategories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/monsembold"
         android:text="@string/categoriestext"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/textInputEditText"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textInputEditText"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="@+id/tvCategories"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="@+id/tvCategories"
-        app:layout_constraintTop_toBottomOf="@+id/tvCategories">
+        app:layout_constraintTop_toBottomOf="@+id/tvCategories"
+        tools:ignore="SpeakableTextPresentCheck">
 
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints,UselessParent,VisualLintBounds">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:layout_marginTop="12dp"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="@+id/tvCategories"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvCategories"
-                app:layout_constraintTop_toBottomOf="@+id/tvCategories"
-                tools:ignore="UselessParent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="10dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_marginStart="10dp"
-                    android:background="@color/white"
-                    android:backgroundTint="@color/white">
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/btn_shape_round"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/btn_shape_round"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.0">
+                    <ImageView
+                        android:id="@+id/iv_catebar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/tvimagewisata"
+                        android:src="@drawable/baseline_water_24">
 
-                        <ImageView
-                            android:id="@+id/iv_catebar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:contentDescription="@string/tvimagewisata"
-                            android:src="@drawable/baseline_water_24">
+                    </ImageView>
 
-                        </ImageView>
+                    <TextView
+                        android:id="@+id/tvCateBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center | bottom"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/monsembold"
+                        android:text="@string/categoryBahari"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp" />
 
-                        <TextView
-                            android:id="@+id/tvCateBar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center | bottom"
-                            android:layout_marginBottom="5dp"
-                            android:fontFamily="@font/monsembold"
-                            android:text="@string/categoryBahari"
-                            android:textColor="@color/black"
-                            android:textSize="10sp"
-                            tools:ignore="SmallSp" />
+                </androidx.cardview.widget.CardView>
 
-                    </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="100dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_marginStart="100dp"
-                    android:background="@color/white"
-                    android:backgroundTint="@color/white">
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/btn_shape_round"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/btn_shape_round"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.0">
+                    <ImageView
+                        android:id="@+id/iv_catebud"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/tvimagewisata"
+                        android:src="@drawable/ic_temple_hindu">
 
-                        <ImageView
-                            android:id="@+id/iv_catebud"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:contentDescription="@string/tvimagewisata"
-                            android:src="@drawable/ic_temple_hindu">
+                    </ImageView>
 
-                        </ImageView>
+                    <TextView
+                        android:id="@+id/tvCatebud"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center | bottom"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/monsembold"
+                        android:text="@string/categoryBud"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp" />
 
-                        <TextView
-                            android:id="@+id/tvCatebud"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center | bottom"
-                            android:layout_marginBottom="5dp"
-                            android:fontFamily="@font/monsembold"
-                            android:text="@string/categoryBud"
-                            android:textColor="@color/black"
-                            android:textSize="10sp"
-                            tools:ignore="SmallSp" />
+                </androidx.cardview.widget.CardView>
 
-                    </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="190dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_marginStart="190dp"
-                    android:background="@color/white"
-                    android:backgroundTint="@color/white">
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/btn_shape_round"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:ignore="TextSizeCheck">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/btn_shape_round"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-                        tools:ignore="TextSizeCheck">
+                    <ImageView
+                        android:id="@+id/iv_catelam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/tvimagewisata"
+                        android:src="@drawable/ic_park_24">
 
-                        <ImageView
-                            android:id="@+id/iv_catelam"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:contentDescription="@string/tvimagewisata"
-                            android:src="@drawable/ic_park_24">
+                    </ImageView>
 
-                        </ImageView>
+                    <TextView
+                        android:id="@+id/tvCatelam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center | bottom"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/monsembold"
+                        android:text="@string/categorylam"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp" />
 
-                        <TextView
-                            android:id="@+id/tvCatelam"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center | bottom"
-                            android:layout_marginBottom="5dp"
-                            android:fontFamily="@font/monsembold"
-                            android:text="@string/categorylam"
-                            android:textColor="@color/black"
-                            android:textSize="10sp"
-                            tools:ignore="SmallSp" />
+                </androidx.cardview.widget.CardView>
 
-                    </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="280dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_marginStart="280dp"
-                    android:background="@color/white"
-                    android:backgroundTint="@color/white">
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/btn_shape_round"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:ignore="TextSizeCheck">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/btn_shape_round"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-                        tools:ignore="TextSizeCheck">
+                    <ImageView
+                        android:id="@+id/iv_catestore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/tvimagewisata"
+                        android:src="@drawable/ic_store_24">
 
-                        <ImageView
-                            android:id="@+id/iv_catestore"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:contentDescription="@string/tvimagewisata"
-                            android:src="@drawable/ic_store_24">
+                    </ImageView>
 
-                        </ImageView>
+                    <TextView
+                        android:id="@+id/tvCatestore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center | bottom"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/monsembold"
+                        android:text="@string/categorystore"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp" />
 
-                        <TextView
-                            android:id="@+id/tvCatestore"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center | bottom"
-                            android:layout_marginBottom="5dp"
-                            android:fontFamily="@font/monsembold"
-                            android:text="@string/categorystore"
-                            android:textColor="@color/black"
-                            android:textSize="10sp"
-                            tools:ignore="SmallSp" />
+                </androidx.cardview.widget.CardView>
 
-                    </androidx.cardview.widget.CardView>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="370dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white">
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_marginStart="370dp"
-                    android:background="@color/white"
-                    android:backgroundTint="@color/white">
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/btn_shape_round"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/btn_shape_round"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.0">
+                    <ImageView
+                        android:id="@+id/iv_catehib"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/tvimagewisata"
+                        android:src="@drawable/ic_bedroom_baby">
 
-                        <ImageView
-                            android:id="@+id/iv_catehib"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:contentDescription="@string/tvimagewisata"
-                            android:src="@drawable/ic_bedroom_baby">
+                    </ImageView>
 
-                        </ImageView>
+                    <TextView
+                        android:id="@+id/tvCatehib"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center | bottom"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/monsembold"
+                        android:text="@string/categoryhib"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp" />
 
-                        <TextView
-                            android:id="@+id/tvCatehib"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center | bottom"
-                            android:layout_marginBottom="5dp"
-                            android:fontFamily="@font/monsembold"
-                            android:text="@string/categoryhib"
-                            android:textColor="@color/black"
-                            android:textSize="10sp"
-                            tools:ignore="SmallSp" />
+                </androidx.cardview.widget.CardView>
 
-                    </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </RelativeLayout>
-
-        </LinearLayout>
+        </RelativeLayout>
     </HorizontalScrollView>
 
     <TextView
         android:id="@+id/tvRecomen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/monsembold"
         android:text="@string/recomentext"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
@@ -367,6 +375,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRecomenWisata"
         android:layout_width="409dp"
         android:layout_height="235dp"
         app:layout_constraintBottom_toBottomOf="@+id/bottomNavigationView"
@@ -374,8 +383,19 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRecomen"
-        app:layout_constraintVertical_bias="0.31"
+        app:layout_constraintVertical_bias="0.648"
         tools:ignore="TextSizeCheck" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="@+id/rvRecomenWisata"
+        app:layout_constraintStart_toStartOf="@+id/rvRecomenWisata"
+        app:layout_constraintTop_toTopOf="@+id/rvRecomenWisata"
+        android:visibility="gone"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
