@@ -39,4 +39,7 @@
     <string name="nearest_umkm">Nearest UMKM</string>
     <string name="view_all">View All</string>
     <string name="rate_this_place">Rate this place</string>
+    <string name="textview">Malioboro</string>
+    <string name="rating">4.7</string>
+    <string name="tvimagewisata">ImageWisata</string>
 </resources>
