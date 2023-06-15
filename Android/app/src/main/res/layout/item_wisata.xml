@@ -21,6 +21,7 @@
      app:layout_constraintTop_toTopOf="parent" >
 
    <ImageView
+       android:id="@+id/iv_wisata"
        android:layout_width="324dp"
        android:layout_height="197dp"
        android:layout_gravity="center"
@@ -82,7 +83,4 @@
 
 
   </androidx.cardview.widget.CardView>
-
-
-</androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
