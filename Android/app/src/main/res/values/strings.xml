@@ -19,4 +19,21 @@
     <string name="umkm">UMKM</string>
     <string name="subTitle2">lokal di setiap destinasi</string>
     <string name="subTitle4">wisata Yogyakrta</string>
+    <string name="home">Home</string>
+    <string name="explore">Explore</string>
+    <string name="profile">Profile</string>
+    <string name="main_text">Where would you like to go?</string>
+    <string name="search">Search</string>
+    <string name="categoriestext">Categories</string>
+    <string name="welcomeText">Where would \nyou like to go?</string>
+    <string name="action_save">Save</string>
+    <string name="name_empty">Name cannot be empty</string>
+    <string name="email_password_wrong">Email or password is wrong</string>
+    <string name="register_success">Register successfully</string>
+    <string name="register_failed">Register failed</string>
+    <string name="password_not_match">Password does not match</string>
+    <string name="email_empty">Email cannot be empty</string>
+    <string name="password_empty">Password cannot be empty</string>
+    <string name="confirm_password_empty">Confirm Password cannot be empty</string>
+    <string name="invalid_name">Name must be at least 3 characters</string>
 </resources>
