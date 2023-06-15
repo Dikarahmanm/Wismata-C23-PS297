@@ -45,8 +45,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun getDetail() {
-//        val id = intent.getStringExtra(EXTRA_ID)
-        val id = 1
+        val id = intent.getStringExtra(EXTRA_ID)
         viewModel.detailWisata(id.toString())
         doLoading(true)
 
