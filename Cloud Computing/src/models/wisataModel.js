@@ -1,4 +1,5 @@
 const dbPool = require('../config/database');
+const axios = require('axios');
 
 const getAllWisata = () => {
   const SQLQuery = 'SELECT * FROM wisata';
@@ -17,10 +18,9 @@ const getUMKMByWisataId = (idWisata) => {
     .then(([rows]) => rows);
 };
 
+
 module.exports = {
   getAllWisata,
   getWisataById,
   getUMKMByWisataId,
-
-  
 };

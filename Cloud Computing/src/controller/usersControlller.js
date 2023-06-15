@@ -95,26 +95,30 @@ const deleteUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
     const { body } = req;
-  
-    if (!body.email || !body.password) {
-      return res.status(400).json({
-        message: 'Invalid Data',
-        data: null,
-      });
-    }
-  
     try {
-      await UsersModel.loginUser(body);
-      res.status(201).json({
-        message: 'Login user success',
-      });
-    } catch (error) {
-      res.status(500).json({
-        message: 'Server Error',
-        serverMessage: error,
-      });
-    }
-  };
+        const user = await UsersModel.getUserbyEmail(body);
+        const userId = user[0][0].id;
+        const email = user[0][0].email;
+        const hashedPassword = user[0][0].password;
+        const match = await bcrypt.compare(body.password, hashedPassword);
+    if(!match)
+        return res.status(400).json({message: "Invalid Email or Password"});
+        const accessToken = jwt.sign({userId, email}, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: '20s'
+        });
+        const refreshToken = jwt.sign({userId, email}, process.env.REFRESH_TOKEN_SECRET, {
+        expiresIn: '2d'
+        });
+        const auth = await UsersModel.loginUser(refreshToken, userId);
+        res.cookie('refreshToken', refreshToken, {
+        httpOnly: true,
+        maxAge: 48 * 60 * 60 * 1000,
+        });
+        res.json({ accessToken });
+    }catch (error){
+    res.status(404).json({msg:"Email Not Found"})
+        }
+}
   
   
 

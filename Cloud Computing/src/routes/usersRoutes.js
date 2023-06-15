@@ -19,7 +19,8 @@ router.patch('/:idUser', UserController.updateUser);
 // DELETE - DELETE
 router.delete('/:idUser', UserController.deleteUser);
 
-router.post('/auth', UserController.loginUser);
+// LOGIN - LOGIN
+router.post('/login', UserController.loginUser);
 
 
 module.exports = router;

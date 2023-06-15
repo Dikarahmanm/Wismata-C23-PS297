@@ -61,32 +61,11 @@ const deleteUser = (idUser) => {
     return dbPool.execute(SQLQuery);
 }
 
-const loginUser = async (req, body) => {
-    const connection = await dbPool.getConnection();
-    await connection.beginTransaction();
+const loginUser = (refreshToken, userId) => {
+  const SQLQuery = `  UPDATE user SET token='${refreshToken}' WHERE id=${userId}`;
 
-    const query = 'SELECT * FROM user WHERE email = ?';
-    db.query(query, [email], async (error, results) => {
-      if (error) {
-        console.error('Error executing SQL query:', error);
-        res.status(500).json({ error: 'Internal server error' });
-        return;
-      }
-    
-      if (results.length === 1) {
-        const user = results[0];
-        const isPasswordMatch = await bcrypt.compare(password, user.password);
-    
-        if (isPasswordMatch) {
-          res.json({ message: 'Login successful' });
-        } else {
-          res.status(401).json({ error: 'Invalid username or password' });
-        }
-      } else {
-        res.status(401).json({ error: 'Invalid username or password' });
-      }
-    });
-  }
+  return dbPool.execute(SQLQuery);
+ };
 
   const getUserByEmail = (email) => {
     const SQLQuery = 'SELECT * FROM user WHERE email = ?';
@@ -94,9 +73,6 @@ const loginUser = async (req, body) => {
       .then(([rows]) => rows[0]);
   };
   
-  const verifyPassword = (password, hashedPassword) => {
-    return bcrypt.compare(password, hashedPassword);
-  };
 
 
 module.exports = {
@@ -107,5 +83,4 @@ module.exports = {
     deleteUser,
     loginUser,
     getUserByEmail,
-    verifyPassword,
 }
