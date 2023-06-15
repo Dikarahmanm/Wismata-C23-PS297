@@ -17,20 +17,20 @@
         tools:targetApi="31">
         <activity
             android:name=".ui.DetailActivity"
-            android:exported="false"
-            android:theme="@style/appbar.Theme.Wismata" />
-        <activity
-            android:name=".ui.RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.Splash"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/appbar.Theme.Wismata">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Splash"
+            android:exported="true"></activity>
         <activity
             android:name=".ui.LoginActivity"
             android:exported="false" />
