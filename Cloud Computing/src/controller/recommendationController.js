@@ -2,7 +2,10 @@ const RecommendationModel = require('../models/recommendationModel');
 
 const getRecommendation = async (req, res) => {
   try {
-    const recommendation = await RecommendationModel.getRecommendation();
+
+    User_Id = 1;
+    
+    const recommendation = await RecommendationModel.getRecommendation(User_Id);
     res.json({
       message: 'GET recommendation success',
       data: recommendation,
