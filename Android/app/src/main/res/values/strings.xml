@@ -36,4 +36,7 @@
     <string name="password_empty">Password cannot be empty</string>
     <string name="confirm_password_empty">Confirm Password cannot be empty</string>
     <string name="invalid_name">Name must be at least 3 characters</string>
+    <string name="nearest_umkm">Nearest UMKM</string>
+    <string name="view_all">View All</string>
+    <string name="rate_this_place">Rate this place</string>
 </resources>
