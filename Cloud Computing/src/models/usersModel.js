@@ -1,6 +1,5 @@
 const dbPool = require('../config/database');
 const encrypt = require('bcrypt');
-const bcrypt = require('bcrypt');
 
 const getAllUsers = () => {
     const SQLQuery = 'SELECT * FROM user';

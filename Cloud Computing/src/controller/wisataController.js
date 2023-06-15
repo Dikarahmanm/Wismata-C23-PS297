@@ -35,7 +35,6 @@ const getWisata = async (req, res) => {
   }
 };
 
-
 module.exports = {
   getAllWisata,
   getWisata,
