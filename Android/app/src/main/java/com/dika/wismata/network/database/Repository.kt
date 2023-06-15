@@ -8,6 +8,7 @@ import com.dika.wismata.network.api.ApiService
 import com.dika.wismata.network.model.DetailWisataModel
 import com.dika.wismata.network.model.Register
 import com.dika.wismata.network.model.UmkmItem
+import com.dika.wismata.network.model.WisataMain
 import com.dika.wismata.utils.PreferenceManager
 import retrofit2.Call
 
@@ -35,6 +36,10 @@ class Repository(
 
     fun wisataById(id: String): Call<DetailWisataModel> {
         return apiService.getWisataById(id)
+    }
+
+    fun getRecomWisata(): Call<WisataMain>{
+        return apiService.getRecomWisata()
     }
 
     companion object {

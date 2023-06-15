@@ -1,15 +1,15 @@
+package com.dika.wismata.network.model
+
+import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class WisataMain(
-    @SerializedName("namaWisata")
-    val namaWisata: String? = null,
 
-    @SerializedName("rating")
-    val rating: String? = null,
+	@field:SerializedName("data")
+	val data: DataItem? = null,
 
-    @SerializedName("fotoWisata")
-    val fotoWisata: String? = null
+	@field:SerializedName("message")
+	val message: String? = null
 ) : Parcelable

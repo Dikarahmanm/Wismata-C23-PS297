@@ -1,8 +1,8 @@
 package com.dika.wismata.network.api
 
-import WisataMain
 import com.dika.wismata.network.model.DetailWisataModel
 import com.dika.wismata.network.model.Register
+import com.dika.wismata.network.model.WisataMain
 
 import retrofit2.Call
 import retrofit2.http.Body
@@ -21,6 +21,6 @@ interface ApiService {
         @Path("id") id: String
     ): Call<DetailWisataModel>
 
-    @GET("wisata")
-    fun getAllWisata(): Call<WisataMain>
+    @GET("recommendation")
+    fun getRecomWisata(): Call<WisataMain>
 }
