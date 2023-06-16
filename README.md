@@ -36,7 +36,6 @@ Discover the best of local businesses on your travels. Our app helps you find th
 | Wellyaz Sayidi Atmaja     | C210DSX1597 | Cloud Computing Engineer  |       https://github.com/wellyazzsa       |
 
 
-## How to run this application?
 
 
 
