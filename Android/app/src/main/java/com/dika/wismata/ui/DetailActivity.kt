@@ -25,9 +25,6 @@ class DetailActivity : AppCompatActivity() {
         ViewModelFactory.getInstance(this)
     }
 
-    private val recyclerView: RecyclerView
-        get() = binding.rvUmkm
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)

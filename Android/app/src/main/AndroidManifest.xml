@@ -35,8 +35,8 @@
             android:name=".ui.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+            android:name=".ui.MainActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>
