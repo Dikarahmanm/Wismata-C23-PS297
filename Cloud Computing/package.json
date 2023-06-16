@@ -2,7 +2,7 @@
   "name": "express-mysql",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Prawito Hudoro",
+  "author": "C23-PS297",
   "license": "MIT",
   "scripts": {
     "start": "nodemon src/index.js"
