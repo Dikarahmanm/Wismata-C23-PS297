@@ -372,7 +372,10 @@
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomNavigationView"
         app:layout_constraintTop_toBottomOf="@+id/tvRecomen"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp"
         tools:listitem="@layout/item_wisata" />
 
     <ProgressBar
