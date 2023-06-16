@@ -1,14 +1,24 @@
 # Wismata App
 
+## About Team
+
+We are from C23-PS297 making the product capstone project for our final project in Bangkit Academy 2023. 
+
 ## About App
 
 Discover the best of local businesses on your travels. Our app helps you find the best places to eat and shop for your best travel experience.
 
 <hr>
 
-## Features
+## Main Features
+
+1. Recommend the destination based on user preference.
+2. Show the nearest UMKM at the destination.
 
 
+## DEMO app
+
+![](https://github.com/Dikarahmanm/Wismata-C23-PS297/blob/documentation/demoapp.gif)
 
 
 
