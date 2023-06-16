@@ -25,7 +25,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="318dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
@@ -366,13 +365,16 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRecomenWisata"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:layout_marginTop="16dp"
         android:clipToPadding="false"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomNavigationView"
         app:layout_constraintTop_toBottomOf="@+id/tvRecomen"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp"
         tools:listitem="@layout/item_wisata" />
 
     <ProgressBar

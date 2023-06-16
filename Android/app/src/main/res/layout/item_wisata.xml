@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="324dp"
+    android:layout_height="197dp"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp"
+    android:layout_gravity="center"
+    app:cardMaxElevation="12dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="324dp"
         android:layout_height="197dp"
-        android:layout_margin="10dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="10dp"
-        app:cardMaxElevation="12dp"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:ignore="VisualLintBounds">
 
         <ImageView
             android:id="@+id/iv_wisata"
             android:layout_width="324dp"
             android:layout_height="197dp"
-            android:layout_gravity="center"
+            android:scaleType="centerCrop"
             android:contentDescription="@string/tvimagewisata"
-            tools:src="@tools:sample/backgrounds/scenic">
-
-        </ImageView>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:src="@tools:sample/backgrounds/scenic" />
 
         <View
             android:id="@+id/view"
@@ -36,34 +38,45 @@
             android:layout_height="60dp"
             android:layout_gravity="bottom"
             android:background="#AED9D9D9"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@id/imageView" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.693"
+            tools:layout_editor_absoluteX="0dp"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/tvWisata"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="30dp"
             android:fontFamily="@font/monmed"
             android:text="@string/textview"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.536" />
 
         <TextView
             android:id="@+id/tvDestinationRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/monlight"
             android:text="@string/rating"
             android:textColor="@color/black"
             android:textSize="10sp"
             app:drawableLeftCompat="@drawable/ic_star_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tvWisata"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvWisata"
+            app:layout_constraintTop_toBottomOf="@+id/tvWisata"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="SmallSp" />
 
         <com.google.android.material.button.MaterialButton
@@ -71,8 +84,6 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_gravity="bottom"
-            android:layout_marginStart="220dp"
-            android:layout_marginBottom="10dp"
             android:background="@drawable/btn_arrow"
             app:backgroundTint="@color/white"
             app:icon="@drawable/ic_arrow"
@@ -80,8 +91,13 @@
             app:iconPadding="0dp"
             app:iconSize="24dp"
             app:iconTint="@color/orange"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.819"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.614"
             tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
-
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
